@@ -76,7 +76,11 @@ const Search = () => {
           <div className="col-md-12">
             <h2>Search Result</h2>
             {usersArray && usersArray.length > 0 ? (
-              usersArray.map((user) => <p key={user._id}>{user.name}</p>)
+              usersArray.map((user) => (
+                <p key={user._id}>
+                  <strong>{user.name}</strong> {user.email}
+                </p>
+              ))
             ) : (
               <p>Search result appear here</p>
             )}
