@@ -78,7 +78,7 @@ const App = () => {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" component={Search} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Search} />

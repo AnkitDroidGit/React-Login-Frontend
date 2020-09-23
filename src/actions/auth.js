@@ -5,12 +5,14 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   SET_MESSAGE,
+  SEARCH_SUCCESS,
+  SEARCH_FAIL,
 } from "./types";
 
-import AuthService from "../services/auth.service";
+import UserService from "../services/auth.service";
 
 export const register = (username, email, password) => (dispatch) => {
-  return AuthService.register(username, email, password).then(
+  return UserService.register(username, email, password).then(
     (response) => {
       dispatch({
         type: REGISTER_SUCCESS,
@@ -45,12 +47,12 @@ export const register = (username, email, password) => (dispatch) => {
   );
 };
 
-export const login = (username, password) => (dispatch) => {
-  return AuthService.login(username, password).then(
+export const login = (email, password) => (dispatch) => {
+  return UserService.login(email, password).then(
     (data) => {
       dispatch({
         type: LOGIN_SUCCESS,
-        payload: { user: data },
+        payload: { user: data.payload },
       });
 
       return Promise.resolve();
@@ -76,9 +78,40 @@ export const login = (username, password) => (dispatch) => {
     }
   );
 };
+export const search = (searchKey, accessToken) => (dispatch) => {
+  return UserService.searchUser(searchKey, accessToken).then(
+    (response) => {
+      dispatch({
+        type: SEARCH_SUCCESS,
+        payload: response.data.payload,
+      });
+      console.log("action payload");
+      console.log(response.data.payload);
+      return Promise.resolve();
+    },
+    (error) => {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      dispatch({
+        type: SEARCH_FAIL,
+      });
+
+      dispatch({
+        type: SET_MESSAGE,
+        payload: message,
+      });
+
+      return Promise.reject();
+    }
+  );
+};
 
 export const logout = () => (dispatch) => {
-  AuthService.logout();
+  UserService.logout();
 
   dispatch({
     type: LOGOUT,
