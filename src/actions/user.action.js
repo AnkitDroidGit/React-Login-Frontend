@@ -9,7 +9,7 @@ import {
   SEARCH_FAIL,
 } from "./types";
 
-import UserService from "../services/auth.service";
+import UserService from "../services/user.service";
 
 export const register = (username, email, password) => (dispatch) => {
   return UserService.register(username, email, password).then(

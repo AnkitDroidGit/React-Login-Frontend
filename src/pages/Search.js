@@ -5,11 +5,10 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 
-import { search } from "../actions/auth";
+import { search } from "../actions/user.action";
 
 const Search = () => {
   const { user: currentUser, users } = useSelector((state) => state.auth);
-  const st = useSelector((state) => state.auth);
   const form = useRef();
   const checkBtn = useRef();
 
@@ -28,7 +27,6 @@ const Search = () => {
       dispatch(search(searchKey, currentUser.accessToken))
         .then(() => {
           setUsersArray(users);
-          console.log(st);
           setLoading(false);
         })
         .catch(() => {
@@ -74,7 +72,7 @@ const Search = () => {
         </Form>
         <div>
           <div className="col-md-12">
-            <h2>Search Result</h2>
+            <h3>Search Result</h3>
             {usersArray && usersArray.length > 0 ? (
               usersArray.map((user) => (
                 <p key={user._id}>

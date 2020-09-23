@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 import Search from "./pages/Search";
 import Home from "./pages/Home";
 
-import { logout } from "./actions/auth";
+import { logout } from "./actions/user.action";
 import { clearMessage } from "./actions/message";
 import { history } from "./helpers/history";
 
@@ -78,7 +78,7 @@ const App = () => {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path="/" component={Search} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/profile" component={Search} />

@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:1234/users/";
+const API_URL =
+  "https://8z1lkqa69b.execute-api.ap-southeast-1.amazonaws.com/dev/users/";
 
 const register = (name, email, password) => {
   return axios.post(API_URL + "register", {
@@ -38,10 +39,10 @@ const searchUser = (searchKey, accessToken) => {
   const options = {
     headers: {
       "Content-Type": "application/json",
-      "x-access-token": accessToken,
     },
     params: {
       search: searchKey,
+      token: accessToken,
     },
   };
   return axios.get(API_URL + "search", options);
