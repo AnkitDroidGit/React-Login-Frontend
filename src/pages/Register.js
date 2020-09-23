@@ -52,7 +52,7 @@ const passwordUparCaseAlpha = (value) => {
   if (!/[A-Z]/.test(value)) {
     return (
       <div className="alert alert-danger" role="alert">
-        The password must contain at least 1 uper case alphabet.
+        The password must contain at least 1 upper case alphabet.
       </div>
     );
   }

@@ -27,7 +27,11 @@ const login = (email, password) => {
   };
   console.log("login called");
   return axios.post(API_URL + "login", data, options).then((response) => {
-    if (response.data.payload.accessToken) {
+    if (
+      response.data &&
+      response.data.payload &&
+      response.data.payload.accessToken
+    ) {
       localStorage.setItem("user", JSON.stringify(response.data.payload));
     }
     console.log(response);

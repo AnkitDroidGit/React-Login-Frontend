@@ -11,7 +11,7 @@ import Search from "./pages/Search";
 import Home from "./pages/Home";
 
 import { logout } from "./actions/user.action";
-import { clearMessage } from "./actions/message";
+import { clearMessage } from "./actions/message.action";
 import { history } from "./helpers/history";
 
 const App = () => {
